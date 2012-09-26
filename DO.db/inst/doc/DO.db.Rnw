@@ -1,0 +1,153 @@
+%
+% NOTE -- ONLY EDIT DO.db.Rnw!!!
+% DO.db.tex file will get overwritten.
+%
+%\VignetteIndexEntry{DO.db Overview}
+%\VignetteKeywords{DO.db}
+%\VignettePackage{DO.db}
+
+\documentclass[12pt]{article}
+
+\usepackage{Sweave}
+
+\author{Jiang Li \\
+\\
+Harbin Medical University, Harbin, China}
+
+
+\textwidth=6.2in
+\textheight=8.5in
+%\parskip=.3cm
+\oddsidemargin=.1in
+\evensidemargin=.1in
+\headheight=-.3in
+
+
+\newcommand\Rpackage[1]{{\textsf{#1}\index{#1 (package)}}}
+\newcommand\RpackageNoindex[1]{{\textsf{#1}}}
+\newcommand\Rclass[1]{{\textit{#1}\index{#1 (class)}}}
+\newcommand\Rfunction[1]{{{\small\texttt{#1}}\index{#1 (function)}}}
+\newcommand\Rmethod[1]{{\small\texttt{#1}}}
+\newcommand\Rcommand[1]{{{\small\texttt{#1}}\index{#1 (function)}}}
+\newcommand\Rfunarg[1]{{\small\texttt{#1}}}
+\newcommand\Robject[1]{{\small\texttt{#1}}}
+
+
+\begin{document}
+
+\title{How To Use DO.db}
+\maketitle
+\tableofcontents
+
+\section{Overview}
+This vignette demonstrates how to easily use the \Rpackage{DO.db} package. The Disease Ontology (DO) is a manually inspected subset of Unified Medical Language System (UMLS) and includes concepts from outside the UMLS disease/disorder semantic network including various cancers, congenital abnormalities, deformities and metal disorders. Terms in DO are organized in Directed Acyclic Graph (DAG). \Rpackage{DO.db} is used to represent the content of Disease Ontology (for example, the child-parent relationship in DO) through Bimap object.  
+
+To start with \Rpackage{DO.db} package, type following code below:
+<<results=hide>>=
+library(DO.db)
+help(DO.db)
+@ 
+
+
+\section{Fetch whole DO terms}
+In \Rpackage{DO.db}, \textit{DOTermsAnnDbBimap} object(a sub-class of Bimap) \textit{DOTERM} represet the whole DO terms. Meanwhile a class named \textit{DOTerms} represents Disease Ontology nodes with four slots. Four S4 methods \textit{DOID,Term,Synonym} and \textit{Secondary} are defined in \Rpackage{DO.db} to fetch the corresponding attribute for a DO term node, they can work on \textit{DOTermsAnnDbBimap,DOTerms} and \textit{character} classes.
+
+Here is an example of how to use these objects and functions, it fetchs the first 10 records and turn them to list object, then use the four S4 methods to fetch the  corresponding attribute. Here is the code and result:
+<<>>=
+FirstTenDOBimap <- DOTERM[1:10] ##grab thet ten
+class(FirstTenDOBimap)
+xx <- as.list(FirstTenDOBimap)
+DOID(xx[[2]])
+        Term(xx[[2]])
+        Synonym(xx[[2]])
+        Secondary(xx[[2]])
+@
+
+
+\section{Fetch the relationship between DO terms}  In this section, we will introduce four Bimap objects which represent relationship between DO terms. There are \textit{DOANCESTOR,DOPARENTS,DOOFFSPRING} and \textit{DOCHILDREN}. we will introduce them in the following sub-sections.
+  
+ \subsection{DOANCESTOR}
+ This data set describes associations between DO 
+  terms and their ancestor  terms, based on the directed acyclic
+  graph (DAG) defined by the Disease Ontology Consortium. The format is an R
+  object mapping the DO  terms to all ancestor terms, where an
+  ancestor term is a more general DO term that precedes
+  the given DO term in the DAG (in other words, the parents, and all
+  their parents, etc.).
+  
+  For example, to fetch all the \textit{DOANCESTOR} in a list object and display the first 4 DOID's ancestors, here is the code:
+<<>>=
+xx <- as.list(DOANCESTOR)
+# Remove DO IDs that do not have any ancestor
+xx <- xx[!is.na(xx)] 
+# Display the first 4 DOID's ancestor
+xx[1:4]
+@  
+ \subsection{DOPARENTS}
+ This data set describes associations between DO
+  terms and their direct parent  terms, based on the directed acyclic
+  graph (DAG) defined by the Disease Ontology Consortium. The format is an R
+  object mapping the DO  terms to all direct parent terms, where a
+  direct parent term is a more general DO term that immediately precedes
+  the given DO term in the DAG.
+  
+    For example, to fetch all the \textit{DOPARENTS} in a list object and display the first 4 DOID's parents, here is the code:
+<<>>=
+xx <- as.list(DOPARENTS)
+# Remove DO IDs that do not have any ancestor
+xx <- xx[!is.na(xx)] 
+# Display the first 4 DOID's ancestor
+xx[1:4]
+@  
+ 
+ 
+ \subsection{DOOFFSPRING}
+ This data set describes associations between DO 
+  terms and their offspring  terms, based on the directed acyclic
+  graph (DAG) defined by the Disease Ontology Consortium. The format is an R
+  object mapping the DO  terms to all offspring terms, where an
+  ancestor term is a more specific DO term that is preceded
+  by the given DO term in the DAG (in other words, the children and all
+  their children, etc.).
+  
+    For example, to fetch all the \textit{DOOFFSPRING} in a list object and display the first  DOID's offsprings, here is the code:
+<<>>=
+xx <- as.list(DOOFFSPRING)
+# Remove DO IDs that do not have any ancestor
+xx <- xx[!is.na(xx)] 
+# Display the first 4 DOID's ancestor
+xx[1]
+@ 
+ 
+ \subsection{DOCHILDREN}
+ This data set describes associations between DO 
+  terms and their direct children  terms, based on the directed acyclic
+  graph (DAG) defined by the Disease Ontology Consortium. The format is an R
+  object mapping the DO  terms to all direct children terms, where a
+  direct child term is a more specific DO term that is immediately preceded
+  by the given DO term in the DAG.
+  
+  
+     For example, to fetch all the \textit{DOCHILDREN} in a list object and display the first  DOID's children, here is the code:
+<<>>=
+xx <- as.list(DOCHILDREN)
+# Remove DO IDs that do not have any ancestor
+xx <- xx[!is.na(xx)] 
+# Display the first 4 DOID's ancestor
+xx[1]
+@ 
+  
+\section{Others}
+In this section, we will introduce the schema of \Rpackage{DO.db} and number of mapped keys for the maps in  \Rpackage{DO.db}.
+
+To get the schema of \Rpackage{DO.db}, type following:
+<<>>=
+DO_dbschema()
+@ 
+
+And to get the number of mapped keys for the maps in  \Rpackage{DO.db}, type following:
+
+<<>>=
+DOMAPCOUNTS
+
+@\end{document}

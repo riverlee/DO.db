@@ -1,0 +1,75 @@
+To run the perl code get_do_relationship.pl
+And it will generate two files:
+1,child2parent.txt
+2,parent2offspring.txt
+start at:,Wed Sep 26 01:00:20 CDT 2012
+end at:,Wed Sep 26 01:00:21 CDT 2012
+###################################
+
+To run the perl code prepare_do_term.pl
+And it will generate one file:
+1,do_term.txt
+start at:,Wed Sep 26 01:00:21 CDT 2012
+end at:,Wed Sep 26 01:00:21 CDT 2012
+###################################
+
+To run the perl code prepare_do_synonym.pl
+And it will generate one file:
+1,do_synonym.txt
+start at:,Wed Sep 26 01:00:21 CDT 2012
+end at:,Wed Sep 26 01:00:21 CDT 2012
+###################################
+
+To run the perl code prepare_do_obsolete.pl
+And it will generate one file:
+1,do_obsolete.txt
+start at:,Wed Sep 26 01:00:21 CDT 2012
+end at:,Wed Sep 26 01:00:21 CDT 2012
+###################################
+
+To run the perl code prepare_do_offspring.pl
+And it will generate one file:
+1,do_offspring.txt
+start at:,Wed Sep 26 01:00:21 CDT 2012
+end at:,Wed Sep 26 01:00:21 CDT 2012
+###################################
+
+To run the perl code prepare_do_parents.pl
+And it will generate one file:
+1,do_parents.txt
+start at:,Wed Sep 26 01:00:21 CDT 2012
+end at:,Wed Sep 26 01:00:21 CDT 2012
+###################################
+
+To run the perl code create_DO.db.pl
+And it will invoke R and generate the DO.sqlite database file
+meanwhile it will insert the meta data into DO.sqlite
+start at:,Wed Sep 26 01:00:21 CDT 2012
+end at:,Wed Sep 26 01:00:22 CDT 2012
+###################################
+
+Insert do_term.txt data into do_term table
+start at:,Wed Sep 26 01:00:22 CDT 2012
+end at:,Wed Sep 26 01:31:17 CDT 2012
+###################################
+
+Insert do_obsolete.txt data into do_obsolete table
+start at:,Wed Sep 26 01:31:17 CDT 2012
+end at:,Wed Sep 26 01:43:20 CDT 2012
+###################################
+
+Insert do_offspring.txt data into do_offspring table
+start at:,Wed Sep 26 01:43:20 CDT 2012
+end at:,Wed Sep 26 05:16:03 CDT 2012
+###################################
+
+Insert do_parents.txt data into do_parents table
+start at:,Wed Sep 26 05:16:03 CDT 2012
+end at:,Wed Sep 26 05:49:11 CDT 2012
+###################################
+
+Insert do_synonym.txt data into do_synonym table
+start at:,Wed Sep 26 05:49:11 CDT 2012
+end at:,Wed Sep 26 07:09:18 CDT 2012
+###################################
+

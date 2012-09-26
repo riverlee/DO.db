@@ -1,0 +1,445 @@
+
+R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "DO.db"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('DO.db')
+Loading required package: AnnotationDbi
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following object(s) are masked from ‘package:stats’:
+
+    xtabs
+
+The following object(s) are masked from ‘package:base’:
+
+    Filter, Find, Map, Position, Reduce, anyDuplicated, cbind,
+    colnames, duplicated, eval, get, intersect, lapply, mapply, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, rbind, rep.int,
+    rownames, sapply, setdiff, table, tapply, union, unique
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Loading required package: DBI
+> 
+> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("DOANCESTOR")
+> ### * DOANCESTOR
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DOANCESTOR
+> ### Title: Annotation of DO Identifiers to their Ancestors
+> ### Aliases: DOANCESTOR
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>   # Convert the object to a list
+>   xx <- as.list(DOANCESTOR)
+>   # Remove DO IDs that do not have any ancestor
+>   xx <- xx[!is.na(xx)]
+>   if(length(xx) > 0){
++     # Get the ancestor DO IDs for the first two elents of xx
++     doids <- xx[1:2]
++   }
+>   
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DOBASE")
+> ### * DOBASE
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DO.db
+> ### Title: Bioconductor annotation data package
+> ### Aliases: DO.db DO
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>   ls("package:DO.db")
+ [1] "DO"          "DOANCESTOR"  "DOCHILDREN"  "DOID"        "DOMAPCOUNTS"
+ [6] "DOOBSOLETE"  "DOOFFSPRING" "DOPARENTS"   "DOSYNONYM"   "DOTERM"     
+[11] "DOTerms"     "DO_dbInfo"   "DO_dbconn"   "DO_dbfile"   "DO_dbschema"
+[16] "Secondary"   "Synonym"     "Term"        "show"       
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DOCHILDREN")
+> ### * DOCHILDREN
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DOCHILDREN
+> ### Title: Annotation of DO Identifiers to their Children
+> ### Aliases: DOCHILDREN
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>   # Convert the object to a list
+>   xx <- as.list(DOCHILDREN)
+>   # Remove DO IDs that do not have any children
+>   xx <- xx[!is.na(xx)]
+>   
+>   if(length(xx) > 0){
++      # Get the parent DO IDs for the first elents of xx
++         doids <- xx[[1]]
++         # Find out the DO terms for the first parent doid
++         DOID(DOTERM[[doids[1]]])
++         Term(DOTERM[[doids[1]]])
++         Synonym(DOTERM[[doids[1]]])
++         Secondary(DOTERM[[doids[1]]])
++   }
+character(0)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DOMAPCOUNTS")
+> ### * DOMAPCOUNTS
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DOMAPCOUNTS
+> ### Title: Number of mapped keys for the maps in package DO.db
+> ### Aliases: DOMAPCOUNTS
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>   DOMAPCOUNTS
+ DOANCESTOR  DOCHILDREN  DOOBSOLETE DOOFFSPRING   DOPARENTS      DOTERM 
+       6284        1789        2371        1789        6284        6285 
+>   mapnames <- names(DOMAPCOUNTS)
+>   DOMAPCOUNTS[mapnames[1]]
+DOANCESTOR 
+      6284 
+>   x <- get(mapnames[1])
+>   sum(!is.na(as.list(x)))
+[1] 6284
+>   count.mappedkeys(x)   # much faster!
+[1] 6284
+> 
+>   ## Check the "map count" of all the maps in package DO.db
+>   #checkMAPCOUNTS("DO.db")
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DOOBSOLETE")
+> ### * DOOBSOLETE
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DOOBSOLETE
+> ### Title: Annotation of DO identifiers by terms defined by Disease
+> ###   Ontology Consortium and their status are obsolete
+> ### Aliases: DOOBSOLETE
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>     # Convert the object to a list
+>     xx <- as.list(DOOBSOLETE)
+>     if(length(xx) > 0){
++         # Get the TERMS for the first elent of xx
++         DOID(xx[[1]])
++         Term(xx[[1]])
++     }
+[1] "Actinomadura madurae infectious disease"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DOOFFSPRING")
+> ### * DOOFFSPRING
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DOOFFSPRING
+> ### Title: Annotation of DO Identifiers to their Offspring
+> ### Aliases: DOOFFSPRING
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>   # Convert the object to a list
+>   xx <- as.list(DOOFFSPRING)
+>   # Remove DO IDs that do not have any offspring
+>   xx <- xx[!is.na(xx)]
+>    if(length(xx) > 0){
++     # Get the offspring DO identifiers for the first two elents of xx
++     doidentifiers <- xx[1:2]
++   }
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DOPARENTS")
+> ### * DOPARENTS
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DOPARENTS
+> ### Title: Annotation of DO Identifiers to their Parents
+> ### Aliases: DOPARENTS
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>   # Convert the object to a list
+>   xx <- as.list(DOPARENTS)
+>   # Remove DO IDs that do not have any parent
+>   xx <- xx[!is.na(xx)]
+>   if(length(xx) > 0){
++      doids <- xx[[1]]
++      # Find out the DO terms for the first parent do ID
++      DOID(DOTERM[[doids[1]]])
++      Term(DOTERM[[doids[1]]])
++      Synonym(DOTERM[[doids[1]]])
++      Secondary(DOTERM[[doids[1]]])
++   }
+[1] "DOID:27"  "DOID:944"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DOSYNONYM")
+> ### * DOSYNONYM
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DOSYNONYM
+> ### Title: Map from DO synonyms to DO terms
+> ### Aliases: DOSYNONYM
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>     x <- DOSYNONYM
+>     sample(x, 3)
+$`DOID:13639`
+DOID: DOID:1342
+Term: congenital hypoplastic anemia
+Synonym: "Congenital hypoplastic anaemia" EXACT
+    [SNOMEDCT_2005_07_31:188588001]
+Synonym: "Congenital hypoplastic anaemia" EXACT
+    [SNOMEDCT_2005_07_31:191236003]
+Synonym: "Congenital hypoplastic anaemia" EXACT
+    [SNOMEDCT_2005_07_31:88854002]
+Synonym: "Constitutional aplastic anaemia" RELATED
+    [SNOMEDCT_2005_07_31:154808006]
+Synonym: "Constitutional aplastic anemia (disorder)" RELATED []
+Synonym: "Constitutional aplastic anemia NOS (disorder)" RELATED []
+Synonym: "Constitutional aplastic anemia [dup] (disorder)" RELATED []
+Synonym: "congenital aplastic anemia" EXACT [CSP2005:0427-0659]
+Synonym: "congenital hypoplastic anemia" EXACT [CSP2005:0427-0659]
+Synonym: "constitutional aplastic anemia" RELATED []
+Synonym: DOID:13639
+Secondary: DOID:13639
+
+$`DOID:579`
+DOID: DOID:18
+Term: urinary system disease
+Synonym: "Non-neoplastic urinary tract disease" EXACT
+    [NCI2004_11_17:C27599]
+Synonym: "urinary tract disease" EXACT []
+Synonym: DOID:579
+Secondary: DOID:579
+
+$`DOID:2637`
+DOID: DOID:4000
+Term: ovary transitional cell carcinoma
+Synonym: "malignant ovarian transitional cell neoplasm" EXACT []
+Synonym: "ovarian transitional cell cancer" EXACT []
+Synonym: "ovarian transitional cell neoplasm" RELATED []
+Synonym: "transitional cell carcinoma of Ovary" EXACT
+    [NCI2004_11_17:C5240]
+Synonym: DOID:2637
+Synonym: DOID:4002
+Secondary: DOID:2637
+Secondary: DOID:4002
+
+>     # DO ID "DOID:8757" has a lot of synonyms
+>     DOTERM[["DOID:8757"]]
+DOID: DOID:8757
+Term: gastric mucosal hypertrophy
+Synonym: DOID:9134
+Synonym: DOID:9242
+Synonym: "familial giant hypertrophic gastritis" EXACT []
+Synonym: "Giant rugal hypertrophy of stomach" EXACT
+    [SNOMEDCT_2005_07_31:235665008]
+Synonym: "hypertrophic gastritis" EXACT [MTHICD9_2006:535.2]
+Synonym: "hypertrophic gastropathy (disorder)" EXACT
+    [SNOMEDCT_2005_07_31:413219009]
+Synonym: "MENETRIER DISEASE" EXACT []
+Secondary: DOID:9134
+Secondary: DOID:9242
+>     # DO ID "DOID:9134" is a synonym of DO ID "DOID:8757"
+>     DOID(DOSYNONYM[["DOID:9134"]])
+[1] "DOID:8757"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DOTERM")
+> ### * DOTERM
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DOTERM
+> ### Title: Annotation of DO Identifiers to DO Terms
+> ### Aliases: DOTERM
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>     # Convert the object to a list
+>     FirstTenDOBimap <- DOTERM[1:10] ##grab the 1st ten
+>     xx <- as.list(FirstTenDOBimap)
+>      if(length(xx) > 0){
++         # Get the TERMS for the 2nd element of xx
++         DOID(xx[[2]])
++         Term(xx[[2]])
++         Synonym(xx[[2]])
++         Secondary(xx[[2]])
++     }
+character(0)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DOTerms-class")
+> ### * DOTerms-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DOTerms-class
+> ### Title: Class "DOTerms"
+> ### Aliases: class:DOTerms DOTerms-class DOTerms initialize,DOTerms-method
+> ###   DOID DOID,DOTerms-method DOID,DOTermsAnnDbBimap-method
+> ###   DOID,character-method Term Term,DOTerms-method
+> ###   Term,DOTermsAnnDbBimap-method Term,character-method Synonym
+> ###   Synonym,DOTerms-method Synonym,DOTermsAnnDbBimap-method
+> ###   Synonym,character-method Secondary Secondary,DOTerms-method
+> ###   Secondary,DOTermsAnnDbBimap-method Secondary,character-method
+> ###   show,DOTerms-method
+> ### Keywords: methods classes
+> 
+> ### ** Examples
+> 
+>   DOnode <- new("DOTerms", DOID="DOID:1234567", Term="Test")
+>   DOID(DOnode)
+[1] "DOID:1234567"
+>   Term(DOnode)
+[1] "Test"
+> 
+>   ##Or you can just use these methods on a DOTermsAnnDbBimap
+> ## Not run: 
+> ##D ##I want to show an ex., but don't want to require DO.db
+> ##D   require(DO.db)
+> ##D   FirstTenDOBimap <- DOTERM[1:10] ##grab the 1st ten
+> ##D   Term(FirstTenDOBimap)
+> ##D 
+> ##D   ##Or you can just use DO IDs directly
+> ##D   ids = keys(FirstTenDOBimap)
+> ##D   Term(ids)
+> ## End(Not run)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DOTermsAnnDbBimap")
+> ### * DOTermsAnnDbBimap
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DOTermsAnnDbBimap
+> ### Title: Class "DOTermsAnnDbBimap"
+> ### Aliases: DOTermsAnnDbBimap class:DOTermsAnnDbBimap
+> ###   DOTermsAnnDbBimap-class
+> ### Keywords: classes interface
+> 
+> ### ** Examples
+> 
+>    class(DOTERM)
+[1] "DOTermsAnnDbBimap"
+attr(,"package")
+[1] "DO.db"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("DO_dbconn")
+> ### * DO_dbconn
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DO_dbconn
+> ### Title: Collect information about the package annotation DB
+> ### Aliases: DO_dbconn DO_dbfile DO_dbschema DO_dbInfo
+> ### Keywords: utilities datasets
+> 
+> ### ** Examples
+> 
+>   ## Count the number of rows in the "do_term" table:
+>   dbGetQuery(DO_dbconn(), "SELECT COUNT(*) FROM do_term")
+  COUNT(*)
+1     6285
+> 
+>   ## The connection object returned by DO_dbconn() was
+>   ## created with:
+>   dbConnect(SQLite(), dbname=DO_dbfile(), cache_size=64000,
++   synchronous=0)
+<SQLiteConnection: DBI CON (32236, 1)> 
+> 
+>   #DO_dbschema()
+> 
+> #  DO_dbInfo()
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  5.808 0.04 6.205 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

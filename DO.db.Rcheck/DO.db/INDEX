@@ -1,0 +1,16 @@
+DO.db                   Bioconductor annotation data package
+DOANCESTOR              Annotation of DO Identifiers to their Ancestors
+DOCHILDREN              Annotation of DO Identifiers to their Children
+DOMAPCOUNTS             Number of mapped keys for the maps in package
+                        DO.db
+DOOBSOLETE              Annotation of DO identifiers by terms defined
+                        by Disease Ontology Consortium and their status
+                        are obsolete
+DOOFFSPRING             Annotation of DO Identifiers to their Offspring
+DOPARENTS               Annotation of DO Identifiers to their Parents
+DOSYNONYM               Map from DO synonyms to DO terms
+DOTERM                  Annotation of DO Identifiers to DO Terms
+DOTerms-class           Class "DOTerms"
+DOTermsAnnDbBimap       Class "DOTermsAnnDbBimap"
+DO_dbconn               Collect information about the package
+                        annotation DB
