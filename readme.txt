@@ -32,6 +32,11 @@ https://diseaseontology.svn.sourceforge.net/svnroot/diseaseontology/trunk/
 perl build.pl -version 2.5 -doversion 2583 -dodate 20120925
 
 
+DO.db 2.6 version
+#Thu Mar 28 15:26:37 CDT 2013
+https://diseaseontology.svn.sourceforge.net/svnroot/diseaseontology/trunk/
+
+perl build.pl -version 2.6 -doversion 2591 -dodate 20130328
 
 
 

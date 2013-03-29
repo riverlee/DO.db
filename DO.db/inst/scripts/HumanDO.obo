@@ -1,5 +1,5 @@
 format-version: 1.2
-date: 18:09:2012 14:44
+date: 21:02:2013 12:08
 saved-by: lschriml
 auto-generated-by: OBO-Edit 2.1-beta6
 subsetdef: GOLD "GOLD"
@@ -5547,7 +5547,7 @@ creation_date: 2012-07-17T12:31:48Z
 
 [Term]
 id: DOID:0050730
-name: coenzyme Q10
+name: coenzyme Q10 deficiency disease
 def: "A mitochondrial metabolism disease that is characterized by a deficiency of CoQ10 resulting from reduced biosynthesis." [url:http\://en.wikipedia.org/wiki/Coenzyme_Q10#CoQ10_deficiency_and_toxicity]
 is_a: DOID:700 ! mitochondrial metabolism disease
 created_by: lschriml
@@ -5665,7 +5665,7 @@ creation_date: 2012-09-18T01:57:40Z
 
 [Term]
 id: DOID:0050745
-name: diffuse large B-cell lymphoma 
+name: diffuse large B-cell lymphoma
 def: "A B-cell lymphocytic neoplasm that is a cancer of B cells presenting as an aggressive tumour which can arise in virtually any part of the body." [url:http\://en.wikipedia.org/wiki/Diffuse_large_B-cell_lymphoma]
 is_a: DOID:707 ! B-cell lymphocytic neoplasm
 created_by: lschriml
@@ -5715,13 +5715,201 @@ creation_date: 2012-09-18T02:03:06Z
 
 [Term]
 id: DOID:0050751
-name: T-cell large granular lymphocyte leukemia 
+name: T-cell large granular lymphocyte leukemia
 def: "A chronic lymphocytic leukemia that exhibits an unexplained, chronic (> 6 months) elevation in large granular lymphocytes (LGLs) in the peripheral blood." [url:http\://en.wikipedia.org/wiki/T-cell_large_granular_lymphocyte_leukemia]
 synonym: "Large granular lymphocytic leukemia" EXACT []
 xref: XX:<new dbxref>
 is_a: DOID:1040 ! chronic lymphocytic leukemia
 created_by: lschriml
 creation_date: 2012-09-18T02:05:41Z
+
+[Term]
+id: DOID:0050752
+name: amyotrophic lateral sclerosis type 8
+is_a: DOID:332 ! amyotrophic lateral sclerosis
+created_by: lschriml
+creation_date: 2013-01-16T12:58:45Z
+
+[Term]
+id: DOID:0050753
+name: cerebellar ataxia
+is_a: DOID:2786 ! cerebellar disease
+created_by: lschriml
+creation_date: 2013-01-16T01:07:02Z
+
+[Term]
+id: DOID:0050754
+name: ataxia with oculomotor apraxia type 1
+is_a: DOID:0050753 ! cerebellar ataxia
+created_by: lschriml
+creation_date: 2013-01-16T01:07:02Z
+
+[Term]
+id: DOID:0050755
+name: ataxia with oculomotor apraxia type 2
+is_a: DOID:0050753 ! cerebellar ataxia
+created_by: lschriml
+creation_date: 2013-01-16T01:07:02Z
+
+[Term]
+id: DOID:0050756
+name: Batten disease
+synonym: "juvenile neuronal ceroid lipofuscinosis" EXACT []
+is_a: DOID:14503 ! neuronal ceroid lipofuscinosis
+created_by: lschriml
+creation_date: 2013-01-16T01:15:03Z
+
+[Term]
+id: DOID:0050757
+name: deafness dystonia syndrome
+is_a: DOID:700 ! mitochondrial metabolism disease
+created_by: lschriml
+creation_date: 2013-01-16T01:20:50Z
+
+[Term]
+id: DOID:0050758
+name: metabolic acidosis
+def: "A lactic acidosis that has_material_basis_in high levels of acid." []
+is_a: DOID:3650 ! lactic acidosis
+created_by: lschriml
+creation_date: 2013-01-16T01:23:37Z
+
+[Term]
+id: DOID:0050759
+name: myotonic dystrophy type 2
+is_a: DOID:11722 ! myotonic dystrophy
+created_by: lschriml
+creation_date: 2013-01-16T01:27:31Z
+
+[Term]
+id: DOID:0050760
+name: X-linked myopathy with excessive autophagy
+synonym: "XMEA" EXACT []
+is_a: DOID:423 ! myopathy
+created_by: lschriml
+creation_date: 2013-01-16T01:29:01Z
+
+[Term]
+id: DOID:0050761
+name: paramyloidosis
+is_a: DOID:9120 ! amyloidosis
+created_by: lschriml
+creation_date: 2013-01-16T01:30:21Z
+
+[Term]
+id: DOID:0050762
+name: adenylosuccinase lyase deficiency 
+is_a: DOID:9252 ! amino acid metabolic disorder
+created_by: lschriml
+creation_date: 2013-01-17T12:42:58Z
+
+[Term]
+id: DOID:0050763
+name: ARC syndrome
+synonym: "Arthrogryposis-renal dysfunction-cholestasis" EXACT []
+is_a: DOID:225 ! syndrome
+created_by: lschriml
+creation_date: 2013-01-17T12:46:38Z
+
+[Term]
+id: DOID:0050764
+name: Armfield syndrome
+is_a: DOID:225 ! syndrome
+created_by: lschriml
+creation_date: 2013-01-17T12:48:15Z
+
+[Term]
+id: DOID:0050765
+name: neuroacanthocytosis
+is_a: DOID:1289 ! neurodegenerative disease
+created_by: lschriml
+creation_date: 2013-01-17T12:54:19Z
+
+[Term]
+id: DOID:0050766
+name: chorea-acanthocytosis
+is_a: DOID:0050765 ! neuroacanthocytosis
+created_by: lschriml
+creation_date: 2013-01-17T12:54:19Z
+
+[Term]
+id: DOID:0050767
+name: midface dysplasia
+is_a: DOID:2256 ! osteochondrodysplasia
+created_by: lschriml
+creation_date: 2013-02-21T11:19:14Z
+
+[Term]
+id: DOID:0050768
+name: mitochondrial complex V (ATP synthase) deficiency, nuclear type 1
+xref: OMIM:604273
+is_a: DOID:700 ! mitochondrial metabolism disease
+created_by: lschriml
+creation_date: 2013-02-21T11:26:46Z
+
+[Term]
+id: DOID:0050769
+name: N syndrome
+xref: OMIM:310465
+xref: Orphanet:ORPHA2608
+is_a: DOID:225 ! syndrome
+created_by: lschriml
+creation_date: 2013-02-21T11:32:26Z
+
+[Term]
+id: DOID:0050770
+name: polycystic liver disease
+xref: OMIM:174050
+is_a: DOID:0050736 ! autosomal dominant disease
+created_by: lschriml
+creation_date: 2013-02-21T11:36:13Z
+
+[Term]
+id: DOID:0050771
+name: phaeochromocytoma
+xref: OMIM:171300
+is_a: DOID:0060084 ! cell type benign neoplasm
+created_by: lschriml
+creation_date: 2013-02-21T11:40:58Z
+
+[Term]
+id: DOID:0050772
+name: <new term>
+is_a: DOID:583 ! hemolytic anemia
+created_by: lschriml
+creation_date: 2013-02-21T11:45:37Z
+
+[Term]
+id: DOID:0050773
+name: paraganglioma
+xref: MSH:D010235
+is_a: DOID:169 ! neuroendocrine tumor
+created_by: lschriml
+creation_date: 2013-02-21T11:51:57Z
+
+[Term]
+id: DOID:0050774
+name: rapadilino syndrome
+xref: OMIM:266280
+is_a: DOID:0050737 ! autosomal recessive disease
+created_by: lschriml
+creation_date: 2013-02-21T11:56:15Z
+
+[Term]
+id: DOID:0050775
+name: schneckenbecken dysplasia 
+xref: OMIM:269250
+is_a: DOID:2256 ! osteochondrodysplasia
+created_by: lschriml
+creation_date: 2013-02-21T12:00:39Z
+
+[Term]
+id: DOID:0050776
+name: non-specific X-linked mental retardation
+xref: OMIM:300558
+is_a: DOID:1059 ! intellectual disability
+created_by: lschriml
+creation_date: 2013-02-21T12:06:40Z
 
 [Term]
 id: DOID:0060000
@@ -19249,7 +19437,6 @@ xref: SNOMEDCT_2010_1_31:230151007
 xref: SNOMEDCT_2010_1_31:31568009
 xref: UMLS_CUI:C0025293
 is_a: DOID:9470 ! bacterial meningitis
-is_obsolete: true
 
 [Term]
 id: DOID:11573
@@ -20247,8 +20434,6 @@ comment: OMIM mapping confirmed by DO. [SN].
 synonym: "Dystrophia myotonica" EXACT [MTHICD9_2006:359.2]
 synonym: "Dystrophia myotonica" EXACT [SNOMEDCT_2005_07_31:155096007]
 synonym: "Dystrophia myotonica" EXACT [SNOMEDCT_2005_07_31:267713009]
-synonym: "Steinert myotonic dystrophy syndrome (disorder)" EXACT [SNOMEDCT_2005_07_31:77956009]
-synonym: "Steinert's disease" EXACT [CSP2005:1849-6719]
 xref: MSH:D009223
 xref: NCI:C84914
 xref: OMIM:160900
@@ -22332,7 +22517,7 @@ is_obsolete: true
 [Term]
 id: DOID:12028
 name: Conn's syndrome
-def: "Aldosterone-Producing Adenoma" []
+def: "An adrenal admenoma characterized by over production of aldosterone." [url:http\://en.wikipedia.org/wiki/Conn%27s_syndrome]
 synonym: "primary aldosteronism" EXACT [ICD9CM_2006:255.10]
 synonym: "primary hyperaldosteronism" EXACT [NCI2004_11_17:C34510]
 synonym: "primary hyperaldosteronism (disorder)" EXACT [SNOMEDCT_2005_07_31:190507007]
@@ -22346,7 +22531,7 @@ xref: SNOMEDCT_2010_1_31:190507007
 xref: SNOMEDCT_2010_1_31:258117004
 xref: SNOMEDCT_2010_1_31:267484005
 xref: UMLS_CUI:C1384514
-is_a: DOID:446 ! hyperaldosteronism
+is_a: DOID:656 ! adrenal adenoma
 
 [Term]
 id: DOID:12029
@@ -38334,7 +38519,7 @@ is_a: DOID:9455 ! lipid storage disease
 
 [Term]
 id: DOID:14503
-name: neuronal ceroid-lipofuscinosis
+name: neuronal ceroid lipofuscinosis
 comment: OMIM mapping submitted by NeuroDevNet. [LS].
 synonym: "hereditary ceroid lipofuscinosis" EXACT [CSP2005:1849-6833]
 synonym: "neuronal ceroid lipofuscinosis (disorder)" EXACT [SNOMEDCT_2005_07_31:42012007]
@@ -53329,7 +53514,7 @@ is_a: DOID:3070 ! malignant glioma
 id: DOID:3070
 name: malignant glioma
 alt_id: DOID:2627
-def: "A cell type cancer that has_material_basis_in glial cells and is located_in brain or located_in spine." []
+def: "A cell type cancer that has_material_basis_in glial cells and is located_in brain or located_in spine." [url:http\://en.wikipedia.org/wiki/Malignant_glioma]
 comment: OMIM mapping confirmed by DO. [SN].
 synonym: "glial cell tumor" EXACT [CSP2005:2012-6589]
 synonym: "glioma" EXACT []
@@ -59653,7 +59838,7 @@ is_obsolete: true
 
 [Term]
 id: DOID:3762
-name: cytochrome-c oxidase deficiency
+name: cytochrome-c oxidase deficiency disease
 comment: OMIM mapping confirmed by DO. [SN].
 synonym: "MITOCHONDRIAL COMPLEX IV DEFICIENCY" EXACT []
 xref: MSH:D030401
@@ -65315,7 +65500,6 @@ xref: OMIM:613090
 xref: SNOMEDCT_2010_1_31:190506003
 xref: SNOMEDCT_2010_1_31:71275003
 xref: UMLS_CUI:C0004775
-is_a: DOID:446 ! hyperaldosteronism
 is_a: DOID:447 ! renal tubular transport disease
 
 [Term]
@@ -65369,6 +65553,7 @@ is_a: DOID:4450 ! renal cell carcinoma
 [Term]
 id: DOID:446
 name: hyperaldosteronism
+def: "An adrenal gland hyperfunction disease that results in the overproduction of aldosterone by the adrenal glands." [url:http\://en.wikipedia.org/wiki/Hyperaldosteronism]
 xref: ICD9CM:255.1
 xref: ICD9CM:255.10
 xref: MSH:D006929
@@ -66713,7 +66898,7 @@ id: DOID:4647
 name: trilateral retinoblastoma
 def: "A retinoblastoma that refers to bilateral retinoblastoma associated with an intracranial primitive neuroectodermal tumor located_in the pineal or suprasellar region." [url:http\://www.ncbi.nlm.nih.gov/pubmed/10391573]
 comment: OMIM mapping confirmed by DO. [LS].
-xref: OMIM:180200.0022
+xref: OMIM:180200
 xref: UMLS_CUI:C1336824
 is_a: DOID:768 ! retinoblastoma
 
@@ -75200,7 +75385,7 @@ id: DOID:5683
 name: hereditary breast ovarian cancer
 synonym: "BRCA1" EXACT []
 synonym: "BRCA2" EXACT []
-synonym: "Familiar breast and Ovarian cancer syndrome" EXACT [NCI2004_11_17:C8493]
+synonym: "Familial breast and Ovarian cancer syndrome" EXACT [NCI2004_11_17:C8493]
 xref: NCI:C8493
 xref: OMIM:604370
 xref: OMIM:612555
@@ -79922,7 +80107,6 @@ xref: SNOMEDCT_2010_1_31:67944007
 xref: UMLS_CUI:C0018553
 xref: UMLS_CUI:C0391826
 is_a: DOID:0050736 ! autosomal dominant disease
-relationship: has_material_basis_in HP:0000006 ! Autosomal dominant inheritance
 
 [Term]
 id: DOID:6458
@@ -98189,7 +98373,7 @@ is_obsolete: true
 [Term]
 id: DOID:9280
 name: carbamoyl phosphate synthetase I deficiency disease
-def: "An amino acid metabolic disorder that involves accumulation of ammonia in the blood." []
+def: "An amino acid metabolic disorder that involves accumulation of ammonia in the blood." [url:http\://ghr.nlm.nih.gov/condition/carbamoyl-phosphate-synthetase-i-deficiency]
 comment: OMIM mapping confirmed by DO. [SN].
 synonym: "CPS I deficiency" EXACT []
 xref: MSH:D020165

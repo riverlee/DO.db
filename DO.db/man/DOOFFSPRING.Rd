@@ -15,7 +15,7 @@
 
     
   Mappings were based on data provided by: Disease Ontology
-  With a date stamp from the source of:  (sub_version )
+  With a date stamp from the source of: 20130328 (sub_version 2591)
 
 
 }
