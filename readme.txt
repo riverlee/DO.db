@@ -1,9 +1,7 @@
 ########Readme File##################
 #Author :Jiang Li
 #Email  :riverlee2008@gamil.com
-#MSN    :riverlee2008@live.cn
-#Address:Harbin Medical University
-#TEl    :+86-13936514493
+#Address:Stanford University
 #####################################
 #timestamp:2010年07月23日 星期五 08时45分26秒 
 
@@ -39,6 +37,11 @@ https://diseaseontology.svn.sourceforge.net/svnroot/diseaseontology/trunk/
 perl build.pl -version 2.6 -doversion 2591 -dodate 20130328
 
 
+DO.db 2.7 version
+#Mon Oct  7 09:43:06 PDT 2013
+https://diseaseontology.svn.sourceforge.net/svnroot/diseaseontology/trunk/
+
+perl build.pl -version 2.7 -doversion 2608 -dodate 20131007
 
 
 
