@@ -41,8 +41,8 @@ metadata<-rbind(c("DBSCHEMA","DO_DB"),
 		c("DBSCHEMAVERSION","1.0"),
 		c("DOSOURCENAME","Disease Ontology"),
 		c("DOSOURCURL","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO"),
-		c("DOSOURCEDATE","20130328"),
-		c("DOVERSION","2591"));
+		c("DOSOURCEDATE","20131007"),
+		c("DOVERSION","2608"));
 q<-paste(sep="","INSERT INTO 'metadata' VALUES('",metadata[,1],"','",metadata[,2],"');")
 tmp<-sapply(q,function(x) sqliteQuickSQL(db,x))		
 META
@@ -53,12 +53,12 @@ $rstr.=$metadata;
 ##################################
 #add map_metadata
 my $map_metadata=<<MAP;
-map_metadata<-rbind(c("TERM","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20130328"),
-		    c("OBSOLETE","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20130328"),
-		    c("CHILDREN","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20130328"),
-		    c("PARENTS","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20130328"),
-		    c("ANCESTOR","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20130328"),
-		    c("OFFSPRING","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20130328")	
+map_metadata<-rbind(c("TERM","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20131007"),
+		    c("OBSOLETE","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20131007"),
+		    c("CHILDREN","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20131007"),
+		    c("PARENTS","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20131007"),
+		    c("ANCESTOR","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20131007"),
+		    c("OFFSPRING","Disease Ontology","http://do-wiki.nubic.northwestern.edu/index.php/Download_DO","20131007")	
 );
 q<-paste(sep="","INSERT INTO 'map_metadata' VALUES('",map_metadata[,1],"','",map_metadata[,2],"','",map_metadata[,3],"','",map_metadata[,4],"');")
 tmp<-sapply(q,function(x) sqliteQuickSQL(db,x))	

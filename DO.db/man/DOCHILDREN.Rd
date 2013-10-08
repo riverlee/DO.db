@@ -14,7 +14,7 @@ This data set describes associations between DO
 
    
   Mappings were based on data provided by: Disease Ontology
-  With a date stamp from the source of: 20130328 (sub_version 2591)
+  With a date stamp from the source of: 20131007 (sub_version 2608)
 
 
 }
