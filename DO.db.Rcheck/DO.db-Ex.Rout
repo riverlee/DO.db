@@ -1,7 +1,6 @@
 
-R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
-Copyright (C) 2012 The R Foundation for Statistical Computing
-ISBN 3-900051-07-0
+R version 3.0.2 (2013-09-25) -- "Frisbee Sailing"
+Copyright (C) 2013 The R Foundation for Statistical Computing
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -24,19 +23,28 @@ Type 'q()' to quit R.
 > library('DO.db')
 Loading required package: AnnotationDbi
 Loading required package: BiocGenerics
+Loading required package: parallel
 
 Attaching package: ‘BiocGenerics’
 
-The following object(s) are masked from ‘package:stats’:
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following object is masked from ‘package:stats’:
 
     xtabs
 
-The following object(s) are masked from ‘package:base’:
+The following objects are masked from ‘package:base’:
 
-    Filter, Find, Map, Position, Reduce, anyDuplicated, cbind,
-    colnames, duplicated, eval, get, intersect, lapply, mapply, mget,
-    order, paste, pmax, pmax.int, pmin, pmin.int, rbind, rep.int,
-    rownames, sapply, setdiff, table, tapply, union, unique
+    Filter, Find, Map, Position, Reduce, anyDuplicated, append,
+    as.data.frame, as.vector, cbind, colnames, duplicated, eval, evalq,
+    get, intersect, is.unsorted, lapply, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, rank, rbind, rep.int,
+    rownames, sapply, setdiff, sort, table, tapply, union, unique,
+    unlist
 
 Loading required package: Biobase
 Welcome to Bioconductor
@@ -47,7 +55,7 @@ Welcome to Bioconductor
 
 Loading required package: DBI
 > 
-> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("DOANCESTOR")
 > ### * DOANCESTOR
@@ -140,16 +148,16 @@ character(0)
 > 
 >   DOMAPCOUNTS
  DOANCESTOR  DOCHILDREN  DOOBSOLETE DOOFFSPRING   DOPARENTS      DOTERM 
-       6284        1789        2371        1789        6284        6285 
+       6569        1811        2374        1811        6569        6570 
 >   mapnames <- names(DOMAPCOUNTS)
 >   DOMAPCOUNTS[mapnames[1]]
 DOANCESTOR 
-      6284 
+      6569 
 >   x <- get(mapnames[1])
 >   sum(!is.na(as.list(x)))
-[1] 6284
+[1] 6569
 >   count.mappedkeys(x)   # much faster!
-[1] 6284
+[1] 6569
 > 
 >   ## Check the "map count" of all the maps in package DO.db
 >   #checkMAPCOUNTS("DO.db")
@@ -230,7 +238,7 @@ DOANCESTOR
 +      Synonym(DOTERM[[doids[1]]])
 +      Secondary(DOTERM[[doids[1]]])
 +   }
-[1] "DOID:27"  "DOID:944"
+[1] "DOID:3936"
 > 
 > 
 > 
@@ -249,47 +257,44 @@ DOANCESTOR
 > 
 >     x <- DOSYNONYM
 >     sample(x, 3)
-$`DOID:13639`
-DOID: DOID:1342
-Term: congenital hypoplastic anemia
-Synonym: "Congenital hypoplastic anaemia" EXACT
-    [SNOMEDCT_2005_07_31:188588001]
-Synonym: "Congenital hypoplastic anaemia" EXACT
-    [SNOMEDCT_2005_07_31:191236003]
-Synonym: "Congenital hypoplastic anaemia" EXACT
-    [SNOMEDCT_2005_07_31:88854002]
-Synonym: "Constitutional aplastic anaemia" RELATED
-    [SNOMEDCT_2005_07_31:154808006]
-Synonym: "Constitutional aplastic anemia (disorder)" RELATED []
-Synonym: "Constitutional aplastic anemia NOS (disorder)" RELATED []
-Synonym: "Constitutional aplastic anemia [dup] (disorder)" RELATED []
-Synonym: "congenital aplastic anemia" EXACT [CSP2005:0427-0659]
-Synonym: "congenital hypoplastic anemia" EXACT [CSP2005:0427-0659]
-Synonym: "constitutional aplastic anemia" RELATED []
-Synonym: DOID:13639
-Secondary: DOID:13639
+$`DOID:10757`
+DOID: DOID:13254
+Term: diverticulitis of colon
+Synonym: "Diverticulitis of colon with hemorrhage" EXACT []
+Synonym: "Diverticulosis of colon with hemorrhage" EXACT []
+Synonym: DOID:10757
+Secondary: DOID:10757
 
-$`DOID:579`
-DOID: DOID:18
-Term: urinary system disease
-Synonym: "Non-neoplastic urinary tract disease" EXACT
-    [NCI2004_11_17:C27599]
-Synonym: "urinary tract disease" EXACT []
-Synonym: DOID:579
-Secondary: DOID:579
+$`DOID:14356`
+DOID: DOID:1793
+Term: pancreatic cancer
+Synonym: "Ca body of pancreas" EXACT [SNOMEDCT_2005_07_31:154477005]
+Synonym: "Ca head of pancreas" EXACT [SNOMEDCT_2005_07_31:154476001]
+Synonym: "Ca tail of pancreas" EXACT [SNOMEDCT_2005_07_31:154478000]
+Synonym: "malignant neoplasm of body of pancreas" EXACT []
+Synonym: "malignant neoplasm of head of pancreas" EXACT []
+Synonym: "malignant neoplasm of tail of pancreas" EXACT []
+Synonym: "pancreas neoplasm" EXACT [CSP2005:2014-4876]
+Synonym: "pancreatic neoplasm" EXACT [MTH:NOCODE]
+Synonym: "pancreatic tumor" EXACT [NCI2004_11_17:C3305]
+Synonym: DOID:14356
+Synonym: DOID:1797
+Synonym: DOID:3588
+Synonym: DOID:9859
+Secondary: DOID:14356
+Secondary: DOID:1797
+Secondary: DOID:3588
+Secondary: DOID:9859
 
-$`DOID:2637`
-DOID: DOID:4000
-Term: ovary transitional cell carcinoma
-Synonym: "malignant ovarian transitional cell neoplasm" EXACT []
-Synonym: "ovarian transitional cell cancer" EXACT []
-Synonym: "ovarian transitional cell neoplasm" RELATED []
-Synonym: "transitional cell carcinoma of Ovary" EXACT
-    [NCI2004_11_17:C5240]
-Synonym: DOID:2637
-Synonym: DOID:4002
-Secondary: DOID:2637
-Secondary: DOID:4002
+$`DOID:3903`
+DOID: DOID:3892
+Term: insulinoma
+Synonym: "Insulin-Producing tumor of Islet cells" EXACT
+    [NCI2004_11_17:C3140]
+Synonym: "Islet cell adenoma (morphologic abnormality)" EXACT
+    [SNOMEDCT_2005_07_31:76345009]
+Synonym: DOID:3903
+Secondary: DOID:3903
 
 >     # DO ID "DOID:8757" has a lot of synonyms
 >     DOTERM[["DOID:8757"]]
@@ -416,13 +421,13 @@ attr(,"package")
 >   ## Count the number of rows in the "do_term" table:
 >   dbGetQuery(DO_dbconn(), "SELECT COUNT(*) FROM do_term")
   COUNT(*)
-1     6285
+1     6570
 > 
 >   ## The connection object returned by DO_dbconn() was
 >   ## created with:
 >   dbConnect(SQLite(), dbname=DO_dbfile(), cache_size=64000,
 +   synchronous=0)
-<SQLiteConnection: DBI CON (32236, 1)> 
+<SQLiteConnection: DBI CON (24473, 1)> 
 > 
 >   #DO_dbschema()
 > 
@@ -432,8 +437,9 @@ attr(,"package")
 > 
 > ### * <FOOTER>
 > ###
-> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  5.808 0.04 6.205 0 0 
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  11.034 1.044 15.594 0 0 
 > grDevices::dev.off()
 null device 
           1 

@@ -1,25 +1,30 @@
-* using log directory ‘/home/lij17/Dropbox/Documents/projects/github/DO.db/DO.db.Rcheck’
-* using R version 2.15.1 (2012-06-22)
+* using log directory ‘/home/jiali/tmp/DO.db/DO.db.Rcheck’
+* using R version 3.0.2 (2013-09-25)
 * using platform: x86_64-unknown-linux-gnu (64-bit)
 * using session charset: UTF-8
 * checking for file ‘DO.db/DESCRIPTION’ ... OK
-* this is package ‘DO.db’ version ‘2.5’
+* this is package ‘DO.db’ version ‘2.9’
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
 * checking if there is a namespace ... OK
 * checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
 * checking whether package ‘DO.db’ can be installed ... OK
 * checking installed package size ... NOTE
   installed size is  6.4Mb
   sub-directories of 1Mb or more:
-    extdata   2.3Mb
-    scripts   3.7Mb
+    extdata   2.2Mb
+    scripts   3.9Mb
 * checking package directory ... OK
-* checking for portable file names ... OK
-* checking for sufficient/correct file permissions ... OK
-* checking DESCRIPTION meta-information ... OK
+* checking DESCRIPTION meta-information ... NOTE
+Packages listed in more than one of Depends, Imports, Suggests, Enhances:
+  ‘methods’ ‘AnnotationDbi’
+A package should be listed in only one of these fields.
 * checking top-level files ... OK
+* checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
 * checking R files for non-ASCII characters ... OK
@@ -29,7 +34,12 @@
 * checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
-* checking for unstated dependencies in R code ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... NOTE
+‘library’ or ‘require’ call to ‘methods’ which was already attached by Depends.
+  Please remove these calls from your code.
+See the information on DESCRIPTION files in the chapter ‘Creating R
+packages’ of the ‘Writing R Extensions’ manual.
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
@@ -39,8 +49,7 @@ File ‘DO.db/R/zzz.R’:
     require("methods", quietly = TRUE)
 
 Package startup functions should not change the search path.
-See section ‘Good practice’ in ?.onAttach.
-
+See section ‘Good practice’ in '?.onAttach'.
 * checking Rd files ... OK
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
@@ -54,9 +63,10 @@ See section ‘Good practice’ in ?.onAttach.
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in ‘inst/doc’ ... OK
 * checking running R code from vignettes ... OK
-* checking re-building of vignette PDFs ... OK
-* checking PDF version of manual ... OK
-NOTE: There were 2 notes.
-See
-  ‘/home/lij17/Dropbox/Documents/projects/github/DO.db/DO.db.Rcheck/00check.log’
-for details.
+* checking re-building of vignette outputs ... OK
+* checking PDF version of manual ... WARNING
+LaTeX errors when creating PDF version.
+This typically indicates Rd problems.
+* checking PDF version of manual without hyperrefs or index ... OK
+WARNING: There was 1 warning.
+NOTE: There were 4 notes.

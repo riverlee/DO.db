@@ -1,12 +1,12 @@
 Package: DO.db
 Title: A set of annotation maps describing the entire Disease Ontology
 Description: A set of annotation maps describing the entire Disease Ontology assembled using data from DO
-Version: 2.5
+Version: 2.9
 Author: Jiang Li
 Maintainer: Jiang Li <riverlee2008@gmail.com>
 Depends: R (>= 2.7.0), methods, AnnotationDbi (>= 1.9.7)
 Imports: methods, AnnotationDbi
 License: Artistic-2.0
 biocViews: AnnotationData, FunctionalAnnotation
-Packaged: Wed Sep 26 01:00:20 2012 UTC; Jiang Li
-Built: R 2.15.1; ; 2012-09-26 14:17:11 UTC; unix
+Packaged: Mon Mar 23 15:23:55 2015 UTC; Jiang Li
+Built: R 3.0.2; ; 2015-03-23 22:54:25 UTC; unix

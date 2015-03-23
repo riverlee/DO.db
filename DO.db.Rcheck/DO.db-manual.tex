@@ -1,0 +1,580 @@
+\nonstopmode{}
+\documentclass[a4paper]{book}
+\usepackage[times,hyper]{Rd}
+\usepackage{makeidx}
+\usepackage[utf8,latin1]{inputenc}
+% \usepackage{graphicx} % @USE GRAPHICX@
+\makeindex{}
+\begin{document}
+\chapter*{}
+\begin{center}
+{\textbf{\huge Package `DO.db'}}
+\par\bigskip{\large \today}
+\end{center}
+\begin{description}
+\raggedright{}
+\item[Title]\AsIs{A set of annotation maps describing the entire Disease Ontology}
+\item[Description]\AsIs{A set of annotation maps describing the entire Disease Ontology assembled using data from DO}
+\item[Version]\AsIs{2.9}
+\item[Author]\AsIs{Jiang Li}
+\item[Maintainer]\AsIs{Jiang Li }\email{riverlee2008@gmail.com}\AsIs{}
+\item[Depends]\AsIs{R (>= 2.7.0), methods, AnnotationDbi (>= 1.9.7)}
+\item[Imports]\AsIs{methods, AnnotationDbi}
+\item[License]\AsIs{Artistic-2.0}
+\item[biocViews]\AsIs{AnnotationData, FunctionalAnnotation}
+\end{description}
+\Rdcontents{\R{} topics documented:}
+\inputencoding{utf8}
+\HeaderA{DO.db}{Bioconductor annotation data package}{DO.db}
+\aliasA{DO}{DO.db}{DO}
+\keyword{datasets}{DO.db}
+%
+\begin{Description}\relax
+
+Welcome to the DO.db annotation Package.  The purpose of this package
+is to provide detailed information about the latest version of the
+Disease Ontology.  This package is updated biannually.
+
+You can learn what objects this package supports with the following command:
+
+\code{ls("package:DO.db")} 
+
+Each of these objects has their own manual page detailing where
+relevant data was obtained along with some examples of how to use it.
+\end{Description}
+%
+\begin{Examples}
+\begin{ExampleCode}
+  ls("package:DO.db")
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DOANCESTOR}{Annotation of DO Identifiers to their Ancestors}{DOANCESTOR}
+\keyword{datasets}{DOANCESTOR}
+%
+\begin{Description}\relax
+This data set describes associations between DO 
+terms and their ancestor  terms, based on the directed acyclic
+graph (DAG) defined by the Disease Ontology Consortium. The format is an R
+object mapping the DO  terms to all ancestor terms, where an
+ancestor term is a more general DO term that precedes
+the given DO term in the DAG (in other words, the parents, and all
+their parents, etc.).
+\end{Description}
+%
+\begin{Details}\relax
+Each DO  term is mapped to a vector of ancestor DO  terms.
+
+
+
+Mappings were based on data provided by: Disease Ontology
+With a date stamp from the source of: 20150323 (sub\_version 2806)
+
+
+\end{Details}
+%
+\begin{References}\relax
+\url{http://do-wiki.nubic.northwestern.edu/index.php/Main_Page} 
+
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+  # Convert the object to a list
+  xx <- as.list(DOANCESTOR)
+  # Remove DO IDs that do not have any ancestor
+  xx <- xx[!is.na(xx)]
+  if(length(xx) > 0){
+    # Get the ancestor DO IDs for the first two elents of xx
+    doids <- xx[1:2]
+  }
+  
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DOCHILDREN}{Annotation of DO Identifiers to their Children}{DOCHILDREN}
+\keyword{datasets}{DOCHILDREN}
+%
+\begin{Description}\relax
+This data set describes associations between DO 
+terms and their direct children  terms, based on the directed acyclic
+graph (DAG) defined by the Disease Ontology Consortium. The format is an R
+object mapping the DO  terms to all direct children terms, where a
+direct child term is a more specific DO term that is immediately preceded
+by the given DO term in the DAG.
+\end{Description}
+%
+\begin{Details}\relax
+Each DO  term is mapped to a vector of children DO  terms.
+
+
+Mappings were based on data provided by: Disease Ontology
+With a date stamp from the source of: 20150323 (sub\_version 2806)
+
+
+\end{Details}
+%
+\begin{References}\relax
+\url{http://do-wiki.nubic.northwestern.edu/index.php/Main_Page} 
+
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+  # Convert the object to a list
+  xx <- as.list(DOCHILDREN)
+  # Remove DO IDs that do not have any children
+  xx <- xx[!is.na(xx)]
+  
+  if(length(xx) > 0){
+     # Get the parent DO IDs for the first elents of xx
+        doids <- xx[[1]]
+        # Find out the DO terms for the first parent doid
+        DOID(DOTERM[[doids[1]]])
+        Term(DOTERM[[doids[1]]])
+        Synonym(DOTERM[[doids[1]]])
+        Secondary(DOTERM[[doids[1]]])
+  }
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DOMAPCOUNTS}{Number of mapped keys for the maps in package DO.db}{DOMAPCOUNTS}
+\keyword{datasets}{DOMAPCOUNTS}
+%
+\begin{Description}\relax
+DOMAPCOUNTS provides the "map count" (i.e. the
+count of mapped keys) for each map in package DO.db.
+\end{Description}
+%
+\begin{Details}\relax
+  
+This "map count" information is precalculated and stored in the
+package annotation DB. This allows some quality control and is used by
+the \code{\LinkA{checkMAPCOUNTS}{checkMAPCOUNTS}}
+function defined in AnnotationDbi to compare and validate different
+methods (like \code{count.mappedkeys(x)} or
+\code{sum(!is.na(as.list(x)))}) for getting the "map count" of a given
+map.
+\end{Details}
+%
+\begin{SeeAlso}\relax
+\code{\LinkA{mappedkeys}{mappedkeys}},
+\code{\LinkA{count.mappedkeys}{count.mappedkeys}},
+\code{\LinkA{checkMAPCOUNTS}{checkMAPCOUNTS}}
+\end{SeeAlso}
+%
+\begin{Examples}
+\begin{ExampleCode}
+  DOMAPCOUNTS
+  mapnames <- names(DOMAPCOUNTS)
+  DOMAPCOUNTS[mapnames[1]]
+  x <- get(mapnames[1])
+  sum(!is.na(as.list(x)))
+  count.mappedkeys(x)   # much faster!
+
+  ## Check the "map count" of all the maps in package DO.db
+  #checkMAPCOUNTS("DO.db")
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DOOBSOLETE}{Annotation of DO identifiers by terms defined by Disease Ontology Consortium and their status are obsolete}{DOOBSOLETE}
+\keyword{datasets}{DOOBSOLETE}
+%
+\begin{Description}\relax
+This is an R object mapping DO identifiers to the specific
+terms in defined by Disease Ontology Consortium and their definition are obsolete
+\end{Description}
+%
+\begin{Details}\relax
+All the obsolete DO terms that are collected in this index will no longer exist 
+in other mapping objects.
+
+Mappings were based on data provided by: Disease Ontology
+With a date stamp from the source of: 20150323 (sub\_version 2806)
+
+
+\end{Details}
+%
+\begin{References}\relax
+\url{http://do-wiki.nubic.northwestern.edu/index.php/Main_Page} 
+
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+    # Convert the object to a list
+    xx <- as.list(DOOBSOLETE)
+    if(length(xx) > 0){
+        # Get the TERMS for the first elent of xx
+        DOID(xx[[1]])
+        Term(xx[[1]])
+    }
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DOOFFSPRING}{Annotation of DO Identifiers to their Offspring}{DOOFFSPRING}
+\keyword{datasets}{DOOFFSPRING}
+%
+\begin{Description}\relax
+This data set describes associations between DO 
+terms and their offspring  terms, based on the directed acyclic
+graph (DAG) defined by the Disease Ontology Consortium. The format is an R
+object mapping the DO  terms to all offspring terms, where an
+ancestor term is a more specific DO term that is preceded
+by the given DO term in the DAG (in other words, the children and all
+their children, etc.).
+\end{Description}
+%
+\begin{Details}\relax
+Each DO  term is mapped to a vector of offspring DO  terms.
+
+
+Mappings were based on data provided by: Disease Ontology
+With a date stamp from the source of: 20150323 (sub\_version 2806)
+
+
+\end{Details}
+%
+\begin{References}\relax
+\url{http://do-wiki.nubic.northwestern.edu/index.php/Main_Page} 
+
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+  # Convert the object to a list
+  xx <- as.list(DOOFFSPRING)
+  # Remove DO IDs that do not have any offspring
+  xx <- xx[!is.na(xx)]
+   if(length(xx) > 0){
+    # Get the offspring DO identifiers for the first two elents of xx
+    doidentifiers <- xx[1:2]
+  }
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DOPARENTS}{Annotation of DO Identifiers to their Parents}{DOPARENTS}
+\keyword{datasets}{DOPARENTS}
+%
+\begin{Description}\relax
+This data set describes associations between DO
+terms and their direct parent  terms, based on the directed acyclic
+graph (DAG) defined by the Disease Ontology Consortium. The format is an R
+object mapping the DO  terms to all direct parent terms, where a
+direct parent term is a more general DO term that immediately precedes
+the given DO term in the DAG.
+\end{Description}
+%
+\begin{Details}\relax
+Each DO  term is mapped to a named vector of DO  terms. The name
+associated with the parent term will be either \emph{isa}, \emph{partof},
+where \emph{isa} indicates that the child term is a more specific version
+of the parent, and  \emph{partof} indicate that the
+child term is a part of the parent. 
+
+
+Mappings were based on data provided by: Disease Ontology
+With a date stamp from the source of: 20150323 (sub\_version 2806)
+
+
+\end{Details}
+%
+\begin{References}\relax
+\url{http://do-wiki.nubic.northwestern.edu/index.php/Main_Page} 
+
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+  # Convert the object to a list
+  xx <- as.list(DOPARENTS)
+  # Remove DO IDs that do not have any parent
+  xx <- xx[!is.na(xx)]
+  if(length(xx) > 0){
+     doids <- xx[[1]]
+     # Find out the DO terms for the first parent do ID
+     DOID(DOTERM[[doids[1]]])
+     Term(DOTERM[[doids[1]]])
+     Synonym(DOTERM[[doids[1]]])
+     Secondary(DOTERM[[doids[1]]])
+  }
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DOSYNONYM}{Map from DO synonyms to DO terms}{DOSYNONYM}
+\keyword{datasets}{DOSYNONYM}
+%
+\begin{Description}\relax
+DOSYNONYM is an R object that provides mapping
+from DO synonyms to DO terms
+\end{Description}
+%
+\begin{Details}\relax
+Mappings were based on data provided by: Disease Ontology
+With a date stamp from the source of: 20150323 (sub\_version 2806)
+
+
+\end{Details}
+%
+\begin{References}\relax
+\url{http://do-wiki.nubic.northwestern.edu/index.php/Main_Page} 
+
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+    x <- DOSYNONYM
+    sample(x, 3)
+    # DO ID "DOID:8757" has a lot of synonyms
+    DOTERM[["DOID:8757"]]
+    # DO ID "DOID:9134" is a synonym of DO ID "DOID:8757"
+    DOID(DOSYNONYM[["DOID:9134"]])
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DOTERM}{Annotation of DO Identifiers to DO Terms}{DOTERM}
+\keyword{datasets}{DOTERM}
+%
+\begin{Description}\relax
+This data set gives mappings between DO identifiers and their respective terms.
+\end{Description}
+%
+\begin{Details}\relax
+Each DO identifier is mapped to a \code{DOTerms} object that has 4 slots:
+DOID: DO Identifier;
+Term: The term for that DO id;
+Secondary: Secondary terms that have been merged into this term;
+Synonym: other  ontology terms that are considered to be synonymous to the primary
+term attached to the DO id
+
+
+Mappings were based on data provided by: Disease Ontology
+With a date stamp from the source of: 20150323 (sub\_version 2806)
+
+
+\end{Details}
+%
+\begin{References}\relax
+\url{http://do-wiki.nubic.northwestern.edu/index.php/Main_Page} 
+
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+    # Convert the object to a list
+    FirstTenDOBimap <- DOTERM[1:10] ##grab the 1st ten
+    xx <- as.list(FirstTenDOBimap)
+     if(length(xx) > 0){
+        # Get the TERMS for the 2nd element of xx
+        DOID(xx[[2]])
+        Term(xx[[2]])
+        Synonym(xx[[2]])
+        Secondary(xx[[2]])
+    }
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DOTerms-class}{Class "DOTerms"}{DOTerms.Rdash.class}
+\aliasA{class:DOTerms}{DOTerms-class}{class:DOTerms}
+\aliasA{DOID}{DOTerms-class}{DOID}
+\aliasA{DOID,character-method}{DOTerms-class}{DOID,character.Rdash.method}
+\aliasA{DOID,DOTerms-method}{DOTerms-class}{DOID,DOTerms.Rdash.method}
+\aliasA{DOID,DOTermsAnnDbBimap-method}{DOTerms-class}{DOID,DOTermsAnnDbBimap.Rdash.method}
+\aliasA{DOTerms}{DOTerms-class}{DOTerms}
+\aliasA{initialize,DOTerms-method}{DOTerms-class}{initialize,DOTerms.Rdash.method}
+\aliasA{Secondary}{DOTerms-class}{Secondary}
+\aliasA{Secondary,character-method}{DOTerms-class}{Secondary,character.Rdash.method}
+\aliasA{Secondary,DOTerms-method}{DOTerms-class}{Secondary,DOTerms.Rdash.method}
+\aliasA{Secondary,DOTermsAnnDbBimap-method}{DOTerms-class}{Secondary,DOTermsAnnDbBimap.Rdash.method}
+\aliasA{show,DOTerms-method}{DOTerms-class}{show,DOTerms.Rdash.method}
+\aliasA{Synonym}{DOTerms-class}{Synonym}
+\aliasA{Synonym,character-method}{DOTerms-class}{Synonym,character.Rdash.method}
+\aliasA{Synonym,DOTerms-method}{DOTerms-class}{Synonym,DOTerms.Rdash.method}
+\aliasA{Synonym,DOTermsAnnDbBimap-method}{DOTerms-class}{Synonym,DOTermsAnnDbBimap.Rdash.method}
+\aliasA{Term}{DOTerms-class}{Term}
+\aliasA{Term,character-method}{DOTerms-class}{Term,character.Rdash.method}
+\aliasA{Term,DOTerms-method}{DOTerms-class}{Term,DOTerms.Rdash.method}
+\aliasA{Term,DOTermsAnnDbBimap-method}{DOTerms-class}{Term,DOTermsAnnDbBimap.Rdash.method}
+\keyword{methods}{DOTerms-class}
+\keyword{classes}{DOTerms-class}
+%
+\begin{Description}\relax
+A class to represent Disease Ontology nodes
+\end{Description}
+%
+\begin{Section}{Objects from the Class}
+Objects can be created by calls of the form
+\code{DOTerms(DOId, term, synonym, secondary)}.
+DOId, term are required.
+\end{Section}
+%
+\begin{Section}{Slots}
+\begin{description}
+
+\item[\code{DOID}:] Object of class \code{"character"} A character
+string for the DO id of a primary node.
+\item[\code{Term}:] Object of class \code{"character"} A
+character string that defines the role of gene product
+corresponding to the primary DO id.
+\item[\code{Synonym}:] Object of class \code{"character"} other
+ontology terms that are considered to be synonymous to the primary
+term attached to the DO id. Synonymous here can mean that the
+synonym is an exact synonym of the primary term, is related to the
+primary term, is broader than the primary term, is more precise
+than the primary term, or name is related to the term, but is not
+exact, broader or narrower.
+\item[\code{Secondary}:] Object of class \code{"character"} DO ids
+that are secondary to the primary DO id as results of merging DO
+terms so that One DO id becomes the primary DO id and the rest
+become the secondary.
+
+\end{description}
+
+\end{Section}
+%
+\begin{Section}{Methods}
+\begin{description}
+
+\item[DOID] \code{signature(object = "DOTerms")}:
+The get method for slot DOID.
+\item[Term] \code{signature(object = "DOTerms")}:
+The get method for slot Term.
+\item[Synonym] \code{signature(object = "DOTerms")}:
+The get method for slot Synonym.
+\item[Secondary] \code{signature(object = "DOTerms")}:
+The get method for slot Secondary.
+\item[show] \code{signature(x = "DOTerms")}:
+The method for pretty print.
+
+\end{description}
+
+\end{Section}
+%
+\begin{Note}\relax
+DOTerms objects are used to represent primary DO nodes in the
+SQLite-based annotation data package DO.db
+\end{Note}
+%
+\begin{References}\relax
+\url{http://do-wiki.nubic.northwestern.edu/index.php/Main_Page} 
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+  DOnode <- new("DOTerms", DOID="DOID:1234567", Term="Test")
+  DOID(DOnode)
+  Term(DOnode)
+
+  ##Or you can just use these methods on a DOTermsAnnDbBimap
+## Not run: ##I want to show an ex., but don't want to require DO.db
+  require(DO.db)
+  FirstTenDOBimap <- DOTERM[1:10] ##grab the 1st ten
+  Term(FirstTenDOBimap)
+
+  ##Or you can just use DO IDs directly
+  ids = keys(FirstTenDOBimap)
+  Term(ids)
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DOTermsAnnDbBimap}{Class "DOTermsAnnDbBimap" }{DOTermsAnnDbBimap}
+\aliasA{class:DOTermsAnnDbBimap}{DOTermsAnnDbBimap}{class:DOTermsAnnDbBimap}
+\aliasA{DOTermsAnnDbBimap-class}{DOTermsAnnDbBimap}{DOTermsAnnDbBimap.Rdash.class}
+\keyword{classes}{DOTermsAnnDbBimap}
+\keyword{interface}{DOTermsAnnDbBimap}
+%
+\begin{Description}\relax
+A sub-class of  Bimap, specific for DO.db. Please see \code{\LinkA{Bimap}{Bimap}} for details.
+\end{Description}
+%
+\begin{SeeAlso}\relax
+\code{\LinkA{Bimap}{Bimap}},
+\code{\LinkA{DOTerms}{DOTerms}}
+\end{SeeAlso}
+%
+\begin{Examples}
+\begin{ExampleCode}
+   class(DOTERM)
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{DO\_dbconn}{Collect information about the package annotation DB}{DO.Rul.dbconn}
+\aliasA{DO\_dbfile}{DO\_dbconn}{DO.Rul.dbfile}
+\aliasA{DO\_dbInfo}{DO\_dbconn}{DO.Rul.dbInfo}
+\aliasA{DO\_dbschema}{DO\_dbconn}{DO.Rul.dbschema}
+\keyword{utilities}{DO\_dbconn}
+\keyword{datasets}{DO\_dbconn}
+%
+\begin{Description}\relax
+Some convenience functions for getting a connection object to (or collecting
+information about) the package annotation DB.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+  DO_dbconn()
+  DO_dbfile()
+
+  DO_dbschema()
+  DO_dbInfo()
+\end{verbatim}
+\end{Usage}
+%
+\begin{Details}\relax
+\code{DO\_dbconn} returns a connection object to the
+package annotation DB.  IMPORTANT: Don't call
+\code{\LinkA{dbDisconnect}{dbDisconnect}} on the connection object
+returned by \code{DO\_dbconn} or you will break all the
+\code{\LinkA{AnnDbObj}{AnnDbObj}} objects defined
+in this package!
+
+\code{DO\_dbfile} returns the path (character string) to the
+package annotation DB (this is an SQLite file).
+
+\code{DO\_dbschema} prints the schema definition of the
+package annotation DB.
+
+\code{DO\_dbInfo} prints other information about the package
+annotation DB.
+\end{Details}
+%
+\begin{Value}
+\code{DO\_dbconn}: a DBIConnection object representing an
+open connection to the package annotation DB.
+
+\code{DO\_dbfile}: a character string with the path to the
+package annotation DB.
+
+\code{DO\_dbschema}: none (invisible \code{NULL}).
+
+\code{DO\_dbInfo}: none (invisible \code{NULL}).
+\end{Value}
+%
+\begin{SeeAlso}\relax
+\code{\LinkA{dbGetQuery}{dbGetQuery}},
+\code{\LinkA{dbConnect}{dbConnect}},
+\code{\LinkA{dbconn}{dbconn}},
+\code{\LinkA{dbfile}{dbfile}},
+\code{\LinkA{dbschema}{dbschema}},
+\code{\LinkA{dbInfo}{dbInfo}}
+\end{SeeAlso}
+%
+\begin{Examples}
+\begin{ExampleCode}
+  ## Count the number of rows in the "do_term" table:
+  dbGetQuery(DO_dbconn(), "SELECT COUNT(*) FROM do_term")
+
+  ## The connection object returned by DO_dbconn() was
+  ## created with:
+  dbConnect(SQLite(), dbname=DO_dbfile(), cache_size=64000,
+  synchronous=0)
+
+  #DO_dbschema()
+
+#  DO_dbInfo()
+\end{ExampleCode}
+\end{Examples}
+\printindex{}
+\end{document}
